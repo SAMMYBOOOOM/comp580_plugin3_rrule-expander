@@ -1,0 +1,37 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+  id: rrule-expander
+  name: RRULE Expander
+  version: 0.1.0
+  status: in-development
+  spec: nanoagent.plugin/v0001
+
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: [workspace]
+
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  expand_rrule:
+    description: >-
+      Validate and expand a supported RFC 5545 daily recurrence rule into
+      ordered occurrences within an inclusive date-time window.
+
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  expand-rrule:
+    description: >-
+      Expand a supported daily recurrence rule into deterministic date-time occurrences.
+    runner: tool
+    tools: [expand_rrule]
+    reference: null
+    instructions: >-
+      Use expand_rrule with an RFC 5545 basic-format DTSTART, a supported
+      daily RRULE, and an inclusive expansion window. Use the same timezone
+      mode for all date-times. Supported recurrence parts are FREQ=DAILY,
+      INTERVAL, COUNT, and UNTIL. COUNT and UNTIL are mutually exclusive.
+      Unsupported recurrence parts are rejected. max_occurrences must be
+      between 1 and 1000. The result reports whether the output was truncated.
