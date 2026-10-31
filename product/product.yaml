@@ -1,17 +1,17 @@
 _ > nanoagent.plugin.v0001.ProductConfig:
-  tagline: Deterministic expansion of supported RFC 5545 daily recurrence rules.
-  summary: >-
-    RRULE Expander validates a restricted RFC 5545 recurrence-rule profile and
-    expands matching daily occurrences inside an inclusive date-time window.
-    Its supported grammar and date arithmetic are deterministic, allowing an
-    independent verifier to reproduce every returned occurrence.
-  highlights:
-    - Strict validation of supported recurrence-rule components.
-    - Inclusive date-time window expansion with COUNT and UNTIL handling.
-    - Independent deterministic verification of every output field.
-    - Explicit output limits and truncation reporting.
-  steps:
-    - "Parse: Validate DTSTART, RRULE, and the requested expansion window."
-    - "Expand: Apply the daily interval and COUNT or UNTIL termination rule."
-    - "Filter: Return occurrences inside the inclusive requested window."
-    - "Report: Return the normalized rule, occurrence count, and truncation status."
+tagline: Deterministic expansion of supported RFC 5545 daily recurrence rules.
+summary: >-
+  RRULE Expander validates a restricted RFC 5545 recurrence-rule profile and
+  expands matching daily occurrences inside an inclusive date-time window.
+  Its supported grammar and date arithmetic are deterministic, allowing an
+  independent verifier to reproduce every returned occurrence.
+highlights:
+  - Strict validation of supported recurrence-rule components.
+  - Inclusive date-time window expansion with COUNT and UNTIL handling.
+  - Independent deterministic verification of every output field.
+  - Explicit output limits and truncation reporting.
+steps:
+  - "Parse: Validate DTSTART, RRULE, and the requested expansion window."
+  - "Expand: Apply the daily interval and COUNT or UNTIL termination rule."
+  - "Filter: Return occurrences inside the inclusive requested window."
+  - "Report: Return the normalized rule, occurrence count, and truncation status."
