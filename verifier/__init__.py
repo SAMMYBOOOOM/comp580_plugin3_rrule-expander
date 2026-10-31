@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
 from contract import TASKS, TOOLS, Task, Tool
 
@@ -18,7 +18,7 @@ def _parse_datetime(value, field):
             if parsed.strftime(fmt) != value:
                 continue
             if utc:
-                parsed = parsed.replace(tzinfo=timezone.utc)
+                parsed = parsed.replace(tzinfo=UTC)
             return parsed
         except ValueError:
             continue

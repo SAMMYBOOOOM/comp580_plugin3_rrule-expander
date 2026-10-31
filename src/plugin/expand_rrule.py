@@ -1,7 +1,6 @@
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 from contract import ExpandInput, ExpandOutput
-
 
 _ALLOWED_PARTS = {"FREQ", "INTERVAL", "COUNT", "UNTIL"}
 
@@ -21,8 +20,7 @@ def _parse_datetime(value: str, field: str) -> datetime:
             if parsed.strftime(fmt) != value:
                 continue
             if utc:
-                from datetime import timezone
-                parsed = parsed.replace(tzinfo=timezone.utc)
+                parsed = parsed.replace(tzinfo=UTC)
             return parsed
         except ValueError:
             continue
@@ -99,7 +97,7 @@ def _parse_rrule(value: str) -> tuple[int, int | None, datetime | None, str]:
     if "UNTIL" in parts:
         until = _parse_datetime(parts["UNTIL"], "UNTIL")
 
-    normalized = f"FREQ=DAILY"
+    normalized = "FREQ=DAILY"
     if interval != 1:
         normalized += f";INTERVAL={interval}"
     if count is not None:

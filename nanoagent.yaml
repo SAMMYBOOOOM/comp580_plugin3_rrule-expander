@@ -1,9 +1,9 @@
 _ > nanoagent.plugin.v0001.ManifestConfig:
-  id: rrule-expander
-  name: RRULE Expander
-  version: 0.1.0
-  status: in-development
-  spec: nanoagent.plugin/v0001
+id: rrule-expander
+name: RRULE Expander
+version: 0.1.0
+status: in-development
+spec: nanoagent.plugin/v0001
 
 runtime > nanoagent.plugin.v0001.RuntimeConfig:
   type: mcp_stdio

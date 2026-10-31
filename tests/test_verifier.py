@@ -2,7 +2,7 @@ import inspect
 
 import pytest
 
-from contract import Task, Tool, TASKS, TOOLS
+from contract import TASKS, TOOLS, Task, Tool
 from plugin.expand_rrule import expand_rrule
 from verifier import verify_input, verify_output, verify_task
 
