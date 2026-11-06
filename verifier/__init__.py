@@ -1,4 +1,4 @@
-from contract import TASKS, TOOLS, Task, Tool
+from contract import TASKS, Tool
 
 _MONTH_DAYS = (0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 _ALLOWED_PARTS = ("FREQ", "INTERVAL", "COUNT", "UNTIL")
@@ -26,7 +26,7 @@ def _all_digits(s):
 def _parse_dt(value, field):
     generic = f"{field} must use YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSSZ"
     if not isinstance(value, str):
-        raise ValueError(f"{field} must be a string")
+        raise ValueError(f"{field} must be a string")  # noqa: TRY004
     if len(value) == 16 and value[15] == "Z":
         body = value[:15]
         tz = True
@@ -160,7 +160,7 @@ def _expand(dtstart, rrule, window_start, window_end, max_occurrences):
     if until is not None and start[6] != until[6]:
         raise ValueError("UNTIL timezone mode must match DTSTART")
     if isinstance(max_occurrences, bool) or not isinstance(max_occurrences, int):
-        raise ValueError("max_occurrences must be an integer")
+        raise ValueError("max_occurrences must be an integer")  # noqa: TRY004
     if not 1 <= max_occurrences <= 1000:
         raise ValueError("max_occurrences must be between 1 and 1000")
     occurrences = []

@@ -7,7 +7,7 @@ _ALLOWED_PARTS = {"FREQ", "INTERVAL", "COUNT", "UNTIL"}
 
 def _parse_datetime(value: str, field: str) -> datetime:
     if not isinstance(value, str):
-        raise ValueError(f"{field} must be a string")
+        raise ValueError(f"{field} must be a string")  # noqa: TRY004
 
     formats = (
         ("%Y%m%dT%H%M%SZ", True),
@@ -134,7 +134,7 @@ def _expand(
         raise ValueError("UNTIL timezone mode must match DTSTART")
 
     if isinstance(max_occurrences, bool) or not isinstance(max_occurrences, int):
-        raise ValueError("max_occurrences must be an integer")
+        raise ValueError("max_occurrences must be an integer")  # noqa: TRY004
 
     if not 1 <= max_occurrences <= 1000:
         raise ValueError("max_occurrences must be between 1 and 1000")
